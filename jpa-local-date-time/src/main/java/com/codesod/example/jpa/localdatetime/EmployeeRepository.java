@@ -15,13 +15,12 @@
  */
 package com.codesod.example.jpa.localdatetime;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
 
-@SpringBootApplication
-public class JpaLocalDateTimeApplication {
+@Repository
+public interface EmployeeRepository extends JpaRepository<Employee, Long>,
+    JpaSpecificationExecutor<Employee> {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JpaLocalDateTimeApplication.class, args);
-	}
 }

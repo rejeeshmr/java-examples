@@ -15,13 +15,23 @@
  */
 package com.codesod.example.jpa.localdatetime;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class JpaLocalDateTimeApplication {
+import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
-	public static void main(String[] args) {
-		SpringApplication.run(JpaLocalDateTimeApplication.class, args);
-	}
+@Entity
+@Getter
+@Setter
+public class Employee {
+
+  @Id
+  @GeneratedValue
+  private Long id;
+  private String name;
+  private String department;
+  private LocalDateTime joiningDate;
 }
