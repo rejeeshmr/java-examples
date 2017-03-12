@@ -102,4 +102,17 @@ public class SingleButtonRemoteTest {
     remote.undoButtonPressed();
     remote.offButtonPressed();
   }
+
+  @Test
+  public void macroCommandTestDrive() {
+    SingleButtonRemote remote = new SingleButtonRemote();
+    FanOnCommand fanOnCommand = new FanOnCommand(new FanController());
+    LightOnCommand lightOnCommand = new LightOnCommand(new LightController());
+    MacroCommand macroCommand = new MacroCommand(fanOnCommand, lightOnCommand);
+
+    remote.setOnCommand(macroCommand);
+
+    remote.onButtonPressed();
+    remote.undoButtonPressed();
+  }
 }
