@@ -23,7 +23,7 @@ import org.junit.Test;
 public class SingleButtonRemoteTest {
 
   @Test
-  public void test() {
+  public void commandTestDrive() {
     SingleButtonRemote remote = new SingleButtonRemote();
     LightController lightController = new LightController();
     FanController fanController = new FanController();
