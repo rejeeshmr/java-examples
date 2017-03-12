@@ -16,8 +16,12 @@
 package com.codesod.example.designpattern.command;
 
 import com.codesod.example.designpattern.command.receiver.FanController;
+import com.codesod.example.designpattern.command.receiver.HeaterController;
+import com.codesod.example.designpattern.command.receiver.HeaterController.Level;
 import com.codesod.example.designpattern.command.receiver.LightController;
 
+import java.util.EnumMap;
+import java.util.Map;
 import org.junit.Test;
 
 public class SingleButtonRemoteTest {
@@ -70,5 +74,32 @@ public class SingleButtonRemoteTest {
     remote.undoButtonPressed();
     remote.offButtonPressed();
     remote.undoButtonPressed();
+  }
+
+  @Test
+  public void commandWithMultipleStatesTestDrive() {
+    SingleButtonRemote remote = new SingleButtonRemote();
+    HeaterController heaterController = new HeaterController();
+    Map<Level, HeaterCommand> heaterCommands = new EnumMap<>(Level.class);
+
+    HeaterCommand heaterHighCommand = new HeaterHighCommand(heaterController, heaterCommands);
+    HeaterCommand heaterMediumCommand = new HeaterMediumCommand(heaterController, heaterCommands);
+    HeaterCommand heaterLowCommand = new HeaterLowCommand(heaterController, heaterCommands);
+    HeaterCommand heaterOffCommand = new HeaterOffCommand(heaterController, heaterCommands);
+
+    heaterCommands.put(Level.HIGH, heaterHighCommand);
+    heaterCommands.put(Level.MEDIUM, heaterMediumCommand);
+    heaterCommands.put(Level.LOW, heaterLowCommand);
+    heaterCommands.put(Level.OFF, heaterOffCommand);
+
+    remote.setOnCommand(heaterHighCommand);
+    remote.setOffCommand(heaterLowCommand);
+
+    remote.onButtonPressed();
+    remote.undoButtonPressed();
+    remote.offButtonPressed();
+    remote.onButtonPressed();
+    remote.undoButtonPressed();
+    remote.offButtonPressed();
   }
 }
