@@ -15,21 +15,18 @@
  */
 package com.codesod.example.designpattern.command;
 
-import com.codesod.example.designpattern.command.receiver.LightController;
-
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
-class LightOffCommand implements Command {
-  private LightController lightController;
+/**
+ * This is an ideal example of a <a href="https://goo.gl/dp5o6S">Null Object</a>.
+ */
+class NoCommand implements Command {
 
   @Override
   public void execute() {
-    lightController.turnOff();
+
   }
 
   @Override
   public void undo() {
-    lightController.turnOn();
+
   }
 }

@@ -27,4 +27,9 @@ class LightOnCommand implements Command {
   public void execute() {
     lightController.turnOn();
   }
+
+  @Override
+  public void undo() {
+    lightController.turnOff();
+  }
 }

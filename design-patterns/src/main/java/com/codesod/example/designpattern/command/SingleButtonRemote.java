@@ -17,16 +17,24 @@ package com.codesod.example.designpattern.command;
 
 import lombok.Setter;
 
-@Setter
 class SingleButtonRemote {
+  @Setter
   private Command onCommand;
+  @Setter
   private Command offCommand;
+  private Command undoCommand = new NoCommand();
 
   void onButtonPressed() {
     onCommand.execute();
+    undoCommand = onCommand;
   }
 
   void offButtonPressed() {
     offCommand.execute();
+    undoCommand = offCommand;
+  }
+
+  void undoButtonPressed() {
+    undoCommand.undo();
   }
 }

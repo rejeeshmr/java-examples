@@ -44,4 +44,31 @@ public class SingleButtonRemoteTest {
     remote.onButtonPressed();
     remote.offButtonPressed();
   }
+
+  @Test
+  public void commandUndoTestDrive() {
+    SingleButtonRemote remote = new SingleButtonRemote();
+    LightController lightController = new LightController();
+    FanController fanController = new FanController();
+    Command lightOnCommand = new LightOnCommand(lightController);
+    Command lightOffCommand = new LightOffCommand(lightController);
+    Command fanOnCommand = new FanOnCommand(fanController);
+    Command fanOffCommand = new FanOffCommand(fanController);
+
+    remote.setOnCommand(lightOnCommand);
+    remote.setOffCommand(lightOffCommand);
+
+    remote.onButtonPressed();
+    remote.undoButtonPressed();
+    remote.offButtonPressed();
+    remote.undoButtonPressed();
+
+    remote.setOnCommand(fanOnCommand);
+    remote.setOffCommand(fanOffCommand);
+
+    remote.onButtonPressed();
+    remote.undoButtonPressed();
+    remote.offButtonPressed();
+    remote.undoButtonPressed();
+  }
 }

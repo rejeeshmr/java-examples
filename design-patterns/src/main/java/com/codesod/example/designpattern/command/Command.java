@@ -17,4 +17,5 @@ package com.codesod.example.designpattern.command;
 
 interface Command {
   void execute();
+  void undo();
 }

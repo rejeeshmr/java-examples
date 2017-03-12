@@ -27,4 +27,9 @@ class FanOnCommand implements Command {
   public void execute() {
     fanController.start();
   }
+
+  @Override
+  public void undo() {
+    fanController.stop();
+  }
 }
