@@ -15,18 +15,13 @@
  */
 package com.codesod.example.designpattern.command;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
-import org.apache.commons.lang3.ArrayUtils;
 
 class MacroCommand implements Command {
   private Command[] commands;
-  private Command[] reverseCommands;
 
   MacroCommand(Command... commands) {
     this.commands = commands;
-    this.reverseCommands = Arrays.copyOf(commands, commands.length);
-    ArrayUtils.reverse(reverseCommands);
   }
 
   @Override
@@ -37,7 +32,8 @@ class MacroCommand implements Command {
 
   @Override
   public void undo() {
-    Stream.of(reverseCommands)
-        .forEach(Command::undo);
+    for (int i = commands.length - 1; i >= 0; i--) {
+      commands[i].undo();
+    }
   }
 }
