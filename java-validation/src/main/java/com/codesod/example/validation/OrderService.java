@@ -24,11 +24,9 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 class OrderService {
-  private final MenuRepository menuRepository;
   private final OrderItemValidator validator;
 
-  OrderService(MenuRepository menuRepository, OrderItemValidator orderItemValidator) {
-    this.menuRepository = menuRepository;
+  OrderService(OrderItemValidator orderItemValidator) {
     this.validator = orderItemValidator;
   }
 
