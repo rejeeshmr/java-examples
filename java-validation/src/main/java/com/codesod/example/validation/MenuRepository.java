@@ -27,8 +27,4 @@ public class MenuRepository {
     log.info("Menu id {}.", menuId);
     return true;
   }
-
-  void save(OrderDTO orderDTO) {
-    log.info("Order {} saved", orderDTO);
-  }
 }

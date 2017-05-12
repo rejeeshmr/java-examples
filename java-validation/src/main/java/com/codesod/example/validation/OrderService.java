@@ -36,6 +36,6 @@ class OrderService {
     orderDTO.getOrderItems()
         .forEach(validator::validate);
 
-    menuRepository.save(orderDTO);
+    log.info("Order {} saved", orderDTO);
   }
 }
