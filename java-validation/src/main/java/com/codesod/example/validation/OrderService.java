@@ -19,16 +19,14 @@ import com.codesod.example.validation.rule.OrderItemValidator;
 
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 class OrderService {
   private final OrderItemValidator validator;
-
-  OrderService(OrderItemValidator orderItemValidator) {
-    this.validator = orderItemValidator;
-  }
 
   void createOrder(OrderDTO orderDTO) {
     orderDTO.getOrderItems()

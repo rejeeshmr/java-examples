@@ -19,13 +19,11 @@ import com.codesod.example.validation.MenuRepository;
 import com.codesod.example.validation.OrderDTO.OrderItem;
 
 import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 class MenuValidator implements OrderItemValidator {
   private final MenuRepository menuRepository;
-
-  MenuValidator(MenuRepository menuRepository) {
-    this.menuRepository = menuRepository;
-  }
 
   @Override
   public void validate(OrderItem orderItem) {

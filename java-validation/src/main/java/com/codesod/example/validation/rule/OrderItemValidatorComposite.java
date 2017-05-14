@@ -18,13 +18,11 @@ package com.codesod.example.validation.rule;
 import com.codesod.example.validation.OrderDTO.OrderItem;
 
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 class OrderItemValidatorComposite implements OrderItemValidator {
   private final List<OrderItemValidator> validators;
-
-  OrderItemValidatorComposite(List<OrderItemValidator> validators) {
-    this.validators = validators;
-  }
 
   @Override
   public void validate(OrderItem orderItem) {
