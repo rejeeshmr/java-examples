@@ -26,6 +26,6 @@ class OrderItemValidatorComposite implements OrderItemValidator {
 
   @Override
   public void validate(OrderItem orderItem) {
-    validators.forEach(validators -> validators.validate(orderItem));
+    validators.forEach(validator -> validator.validate(orderItem));
   }
 }
