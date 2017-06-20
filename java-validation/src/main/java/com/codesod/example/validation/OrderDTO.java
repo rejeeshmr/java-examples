@@ -31,7 +31,7 @@ public class OrderDTO {
   private String customerId;
 
   @NotNull
-  @Size(min = 1)
+  @Size(min = 2)
   private List<OrderItem> orderItems;
 
   @Getter
