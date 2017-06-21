@@ -42,5 +42,6 @@ public class OrderDTO {
     private String description;
     private String price;
     private Integer quantity;
+    private String masterOrderName;
   }
 }
